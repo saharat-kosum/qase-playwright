@@ -33,6 +33,9 @@ export default defineConfig({
             token: `c6ddc0118e3c35ac6da3520ee191018c2d2d93f6307c01fde40a95aa01458e97`,
           },
           project: `TMDEMO`,
+          run: {
+            "complete": true
+          }
         },
       },
     ],['html'],
