@@ -30,9 +30,9 @@ export default defineConfig({
        /* You can define the reporter options here, or in a separate file. */
         testops: {
           api: {
-            token: `c6ddc0118e3c35ac6da3520ee191018c2d2d93f6307c01fde40a95aa01458e97`,
+            token: `2082a34855b74f82f56e27f306fc8af8a738a10ba3a0fc8b239af73d69ee468b`,
           },
-          project: `TMDEMO`,
+          project: `CUBANK`,
           run: {
             "complete": true
           }
