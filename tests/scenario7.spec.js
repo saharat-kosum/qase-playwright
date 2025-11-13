@@ -18,7 +18,8 @@ test.describe('Scenario 7', () => {
         await loginAsUser(page);
     });
 
-    test('SC7-TC1 Bill Payment Water Charge Pass', async ({ page }) => {
+    test('SC7-TC1 Bill Payment Water Charge Fail', async ({ page }) => {
+        await resetUserBalance('6870021001', 1000);
 
         await page.getByRole('radio').first().check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
@@ -28,6 +29,8 @@ test.describe('Scenario 7', () => {
     });
 
     test('SC7-TC2 Bill Payment Electric Charge Pass', async ({ page }) => {
+        await resetUserBalance('6870021001', 900);
+        
         await page.getByRole('radio').nth(1).check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('100');
@@ -36,6 +39,8 @@ test.describe('Scenario 7', () => {
     });
 
     test('SC7-TC3 Bill Payment Phone Charge Pass', async ({ page }) => {
+        await resetUserBalance('6870021001', 800);
+        
         await page.getByRole('radio').nth(2).check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('100');

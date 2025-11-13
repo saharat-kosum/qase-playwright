@@ -19,6 +19,8 @@ test.describe('Scenario 6', () => {
     });
 
     test('SC6-TC1 Bill Payment Fail - Payment amount is not decimal', async ({ page }) => {
+        await resetUserBalance('6870021001', 1000);
+
         await page.getByRole('radio').first().check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('50.5');
@@ -29,6 +31,8 @@ test.describe('Scenario 6', () => {
     });
 
     test('SC6-TC2 Bill Payment Fail - Payment amount is decimal & less than 0', async ({ page }) => {
+        await resetUserBalance('6870021001', 1000);
+
         await page.getByRole('radio').nth(1).check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('-100');
@@ -38,6 +42,8 @@ test.describe('Scenario 6', () => {
     });
 
     // test('SC6-TC3 Bill Payment Fail - Payment amount is not a number', async ({ page }) => {
+    //     await resetUserBalance('6870021001', 1000);
+
     //     await page.getByRole('radio').nth(2).check();
     //     await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
     //     await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('e');
@@ -48,6 +54,8 @@ test.describe('Scenario 6', () => {
     // });
 
     test('SC6-TC4 Bill Payment Fail - Payment amount is blank', async ({ page }) => {
+        await resetUserBalance('6870021001', 1000);
+        
         await page.getByRole('radio').first().check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('');
@@ -58,6 +66,8 @@ test.describe('Scenario 6', () => {
     });
 
     test('SC6-TC5 Bill Payment Fail - Payment amount is more than balance', async ({ page }) => {
+        await resetUserBalance('6870021001', 1000);
+        
         await page.getByRole('radio').nth(2).check();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('3000');
@@ -67,6 +77,8 @@ test.describe('Scenario 6', () => {
     });
 
     test('SC6-TC6 Bill Payment Fail - No select payment type', async ({ page }) => {
+        await resetUserBalance('6870021001', 1000);
+        
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('100');
         await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByRole('button').click();
