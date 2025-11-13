@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "codegen" : "npx playwright codegen"
+    "codegen": "npx playwright codegen"
   },
   "keywords": [],
   "author": "",
