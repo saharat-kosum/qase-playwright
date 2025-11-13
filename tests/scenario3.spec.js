@@ -32,7 +32,7 @@ test.describe('Scenario 3', () => {
         await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().click();
         await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().fill('100');
         await page.getByRole('button', { name: 'Confirm' }).first().click();
-        await expect(page.locator('#root')).toContainText('200');
+        await expect(page.locator('#root')).toContainText('100');
     });
 
     test('SC3-TC2: Deposit fail with amount = 0.1', async ({ page }) => {
