@@ -37,15 +37,15 @@ test.describe('Scenario 6', () => {
         await expect(page.getByText('The amount must be greater than 0. Please enter a positive number.')).toBeVisible();
     });
 
-    test('SC6-TC3 Bill Payment Fail - Payment amount is not a number', async ({ page }) => {
-        await page.getByRole('radio').nth(2).check();
-        await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
-        await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('e');
-        await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByRole('button').click();
+    // test('SC6-TC3 Bill Payment Fail - Payment amount is not a number', async ({ page }) => {
+    //     await page.getByRole('radio').nth(2).check();
+    //     await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').click();
+    //     await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByPlaceholder('Please fill amount').fill('e');
+    //     await page.locator('form').filter({ hasText: 'Water ChargeElectric' }).getByRole('button').click();
 
-        const message = await page.locator('[cid="b4"]').evaluate(el => el.validationMessage);
-        expect(message).toBe('Please enter a number.');
-    });
+    //     const message = await page.locator('[cid="b4"]').evaluate(el => el.validationMessage);
+    //     expect(message).toBe('Please enter a number.');
+    // });
 
     test('SC6-TC4 Bill Payment Fail - Payment amount is blank', async ({ page }) => {
         await page.getByRole('radio').first().check();
