@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { resetUserBalance } from '../utils/resetUserBalance.js';
 import { getMongoClient } from "../utils/mongoClient.js";
+import { loginAsUser } from '../utils/loginAsUser.js';
 
 test.describe('Scenario 5', () => {
   test.beforeAll(async () => {
@@ -16,14 +17,7 @@ test.describe('Scenario 5', () => {
   test.beforeEach(async ({ page }) => {
     await resetUserBalance('6870021001', 0);
 
-    await page.goto('http://localhost:3000/');
-    await page.getByRole('textbox', { name: 'Account Number:' }).click();
-    await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');
-    await page.getByRole('textbox', { name: 'Password:' }).click();
-    await page.getByRole('textbox', { name: 'Password:' }).fill('1234');
-    await page.getByRole('button', { name: 'Login' }).click();
-    await expect(page.getByRole('heading', { name: 'Elly Musk' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: '0' })).toBeVisible();
+    await loginAsUser(page);
 
     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().click();
     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().fill('110');
