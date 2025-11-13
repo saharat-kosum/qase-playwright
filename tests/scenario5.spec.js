@@ -30,7 +30,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
   });
 
-  test('TC01 Transfer success', async ({ page }) => {
+  test('SC5-TC1 Transfer success', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('10');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -49,7 +49,7 @@ test.describe('Scenario 5', () => {
     await expect(page2.getByRole('heading', { name: '15' })).toBeVisible();
   });
 
-  test('TC02 Transfer failed - Account is not a number', async ({ page }) => {
+  test('SC5-TC2 Transfer failed - Account is not a number', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('mmmmmmmmmm');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -57,7 +57,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('Your account ID should')).toBeVisible();
   });
 
-  test('TC03 Transfer failed - Account less than 10 digits', async ({ page }) => {
+  test('SC5-TC3 Transfer failed - Account less than 10 digits', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('687002100');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -65,7 +65,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('Your account ID must be')).toBeVisible();
   });
 
-  test('TC04 Transfer failed - Account more than 10 digits', async ({ page }) => {
+  test('SC5-TC4 Transfer failed - Account more than 10 digits', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('68700210010');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -73,7 +73,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('Your account ID must be')).toBeVisible();
   });
 
-  test('TC05 Transfer failed - Account is empty', async ({ page }) => {
+  test('SC5-TC5 Transfer failed - Account is empty', async ({ page }) => {
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
@@ -81,7 +81,7 @@ test.describe('Scenario 5', () => {
     expect(message).toBe('Please fill out this field.');
   });
 
-  test('TC06 Transfer failed - Amount is decimal', async ({ page }) => {
+  test('SC5-TC6 Transfer failed - Amount is decimal', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20.55');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -90,7 +90,7 @@ test.describe('Scenario 5', () => {
     expect(message).toBe('Please enter a valid value. The two nearest valid values are 20 and 21.');
   });
 
-  test('TC07 Transfer failed - Amount is less than 0', async ({ page }) => {
+  test('SC5-TC7 Transfer failed - Amount is less than 0', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('-1');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -98,7 +98,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('The amount must be greater')).toBeVisible();
   });
 
-  test('TC08 Transfer failed - Amount is not a number', async ({ page }) => {
+  test('SC5-TC8 Transfer failed - Amount is not a number', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('e');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -107,7 +107,7 @@ test.describe('Scenario 5', () => {
     expect(message).toBe('Please enter a number.');
   });
 
-  test('TC09 Transfer failed - Amount is more than balance', async ({ page }) => {
+  test('SC5-TC9 Transfer failed - Amount is more than balance', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('500');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -115,7 +115,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('Your balance is not enough to')).toBeVisible();
   });
 
-  test('TC10 Transfer failed - Account not found', async ({ page }) => {
+  test('SC5-TC10 Transfer failed - Account not found', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021006');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -123,7 +123,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('We couldn\'t find the')).toBeVisible();
   });
 
-  test('TC11 Transfer failed - Same Account', async ({ page }) => {
+  test('SC5-TC11 Transfer failed - Same Account', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021001');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -131,7 +131,7 @@ test.describe('Scenario 5', () => {
     await expect(page.getByText('You cannot transfer to your')).toBeVisible();
   });
 
-  test('TC12 Transfer failed - Amount is empty', async ({ page }) => {
+  test('SC5-TC12 Transfer failed - Amount is empty', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
