@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { qase } from 'playwright-qase-reporter';
-//eve test//
 
 // test('has title', async ({ page }) => {
 //   await page.goto('http://localhost:3000/');
