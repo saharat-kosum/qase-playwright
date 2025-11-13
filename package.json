@@ -11,5 +11,8 @@
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.9.2",
     "playwright-qase-reporter": "^2.1.6"
+  },
+  "dependencies": {
+    "mongodb": "^7.0.0"
   }
 }
