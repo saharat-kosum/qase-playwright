@@ -1,9 +1,16 @@
 import { test, expect } from '@playwright/test';
 import { resetUserBalance } from '../utils/resetUserBalance.js';
+import { getMongoClient } from "../utils/mongoClient.js";
 
 test.describe('Scenario 5', () => {
   test.beforeAll(async () => {
     await resetUserBalance('6870021002', 5);
+  });
+
+  test.afterAll(async () => {
+    const client = getMongoClient();
+    await client.close();
+    console.log('✔ MongoDB connection closed');
   });
 
   test.beforeEach(async ({ page }) => {
