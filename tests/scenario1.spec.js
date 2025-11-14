@@ -30,7 +30,7 @@ test.describe("Scenario 1", () => {
     await page.getByRole("textbox", { name: "Account Number:" }).click();
     await page
       .getByRole("textbox", { name: "Account Number:" })
-      .fill("6870021006");
+      .fill("6870021015");
     await page.getByRole("textbox", { name: "Password:" }).click();
     await page.getByRole("textbox", { name: "Password:" }).fill("1234");
     await page.getByRole("textbox", { name: "First Name:" }).click();
