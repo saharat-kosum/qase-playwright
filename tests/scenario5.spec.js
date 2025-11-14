@@ -100,7 +100,7 @@ test.describe('Scenario 5', () => {
 
   test('SC5-TC8 Transfer failed - Amount is not a number', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('6870021002');
-    await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('e');
+    await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').type('e');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
     const message = await page.locator('[cid="t2"]').evaluate(el => el.validationMessage);

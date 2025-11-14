@@ -49,12 +49,12 @@ test.describe('Scenario 3', () => {
         await expect(page.locator('#root')).toContainText('The amount must be greater than 0. Please enter a positive number.');
     });
 
-    // test('SC3-TC4: Deposit fail with amount = +', async ({ page }) => {
-    //     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().click();
-    //     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().fill('+');
-    //     await page.getByRole('button', { name: 'Confirm' }).first().click();
-    //     await expect(page.locator('#root')).toContainText('0');
-    // });
+    test('SC3-TC4: Deposit fail with amount = +', async ({ page }) => {
+        await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().click();
+        await page.getByRole('spinbutton', { name: 'Please put your amount:' }).first().type('e');
+        await page.getByRole('button', { name: 'Confirm' }).first().click();
+        await expect(page.locator('#root')).toContainText('0');
+    });
 
     test('SC3-TC5: Deposit fail with amount = empty string', async ({ page }) => {
         await page.goto('http://localhost:3000/account/');

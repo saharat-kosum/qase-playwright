@@ -54,7 +54,7 @@ test.describe('Scenario 8', () => {
 
   test('SC8-TC4 Withdraw failed - Amount is not a number', async ({ page }) => {
     await page2.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page2.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('e');
+    await page2.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).type('e');
     await page2.getByRole('button', { name: 'Confirm' }).nth(1).click();
 
     const message = await page2.locator('[cid="w1"]').evaluate(el => el.validationMessage);

@@ -54,10 +54,10 @@ test.describe('Scenario 4', () => {
   test('SC4-TC4 Withdraw Fail: Withdraw amount ไม่ใช่ตัวเลข', async ({ page }) => {
     await resetUserBalance('6870021001', 100);
     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('+');
+    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).type('e');
     await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
     const message = await page.locator('[cid="w1"]').evaluate(el => el.validationMessage);
-    expect(message).toBe('Please enter a number');
+    expect(message).toBe('Please enter a number.');
     //await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
 
   });
