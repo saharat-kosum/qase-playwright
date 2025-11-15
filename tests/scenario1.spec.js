@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Scenario 1", () => {
+test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", () => {
   test("SC1-TC1 Register success -3=<ความยาวอักขระของ FirstName Lastname รวมช่องว่าง >30 ", async ({
     page,
   }) => {

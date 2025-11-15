@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Scenario 2', () => {
-  test('TC01 Login success', async ({ page }) => {
+test.describe('Scenario 2: Login ไม่ผ่าน', () => {
+  test('SC2-TC1 Login success', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');
@@ -13,7 +13,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByRole('heading', { name: 'Elly Musk' })).toBeVisible();
   });
 
-  test('TC02 Login failed - Account number not found', async ({ page }) => {
+  test('SC2-TC2 Login failed - Account number not found', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021006');
@@ -24,7 +24,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('User not found. Please check')).toBeVisible();
   });
 
-  test('TC03 Login failed - Incorrect password', async ({ page }) => {
+  test('SC2-TC3 Login failed - Incorrect password', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');
@@ -35,7 +35,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Incorrect password. Please')).toBeVisible();
   });
 
-  test('TC04 Login failed - Account number is not a number', async ({ page }) => {
+  test('SC2-TC4 Login failed - Account number is not a number', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('687002100m');
@@ -46,7 +46,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Your account ID should')).toBeVisible();
   });
 
-  test('TC05 Login failed - Account number less than 10 digits', async ({ page }) => {
+  test('SC2-TC5 Login failed - Account number less than 10 digits', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('687002100');
@@ -57,7 +57,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Your account ID must be')).toBeVisible();
   });
 
-  test('TC06 Login failed - Account number more than 10 digits', async ({ page }) => {
+  test('SC2-TC6 Login failed - Account number more than 10 digits', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('68700210012');
@@ -68,7 +68,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Your account ID must be')).toBeVisible();
   });
 
-  test('TC07 Login failed - Account number is empty', async ({ page }) => {
+  test('SC2-TC7 Login failed - Account number is empty', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Password:' }).click();
     await page.getByRole('textbox', { name: 'Password:' }).fill('1234');
@@ -78,7 +78,7 @@ test.describe('Scenario 2', () => {
     expect(message).toBe('Please fill out this field.');
   });
 
-  test('TC08 Login failed - Password is not a number', async ({ page }) => {
+  test('SC2-TC8 Login failed - Password is not a number', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');
@@ -89,7 +89,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Your password should contain')).toBeVisible();
   });
 
-  test('TC09 Login failed - Password less than 4 digits', async ({ page }) => {
+  test('SC2-TC9 Login failed - Password less than 4 digits', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');
@@ -100,7 +100,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Your password must be exactly')).toBeVisible();
   });
 
-  test('TC10 Login failed - Password more than 4 digits', async ({ page }) => {
+  test('SC2-TC10 Login failed - Password more than 4 digits', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');
@@ -111,7 +111,7 @@ test.describe('Scenario 2', () => {
     await expect(page.getByText('Your password must be exactly')).toBeVisible();
   });
 
-  test('TC11 Login failed - Password is empty', async ({ page }) => {
+  test('SC2-TC11 Login failed - Password is empty', async ({ page }) => {
     await page.goto('http://localhost:3000/');
     await page.getByRole('textbox', { name: 'Account Number:' }).click();
     await page.getByRole('textbox', { name: 'Account Number:' }).fill('6870021001');

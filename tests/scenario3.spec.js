@@ -4,7 +4,7 @@ import { resetUserBalance } from '../utils/resetUserBalance.js';
 import { getMongoClient } from "../utils/mongoClient.js";
 import { openDb, setBalance, closeDb } from '../utils/db'
 
-test.describe('Scenario 3', () => {
+test.describe('Scenario 3: Login ผ่าน ตามด้วย การฝากเงินไม่ผ่าน', () => {
     test.beforeAll(async () => {
         await openDb();
     });

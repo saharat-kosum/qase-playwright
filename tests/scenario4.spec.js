@@ -3,7 +3,7 @@ import { resetUserBalance } from '../utils/resetUserBalance.js';
 import { getMongoClient } from "../utils/mongoClient.js";
 import { loginAsUser } from '../utils/loginAsUser.js';
 
-test.describe('Scenario 4', () => {
+test.describe('Scenario 4: Login ผ่าน ตามด้วย การฝากเงินที่ผ่าน และ ถอนเงินที่ไม่ผ่าน', () => {
   test.afterAll(async () => {
     const client = getMongoClient();
     await client.close();
