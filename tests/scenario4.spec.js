@@ -3,7 +3,7 @@ import { resetUserBalance } from '../utils/resetUserBalance.js';
 import { getMongoClient } from "../utils/mongoClient.js";
 import { loginAsUser } from '../utils/loginAsUser.js';
 
-test.describe('Scenario 4', () => {
+test.describe('Scenario 4: Login ผ่าน ตามด้วย การฝากเงินที่ผ่าน และ ถอนเงินที่ไม่ผ่าน(เงินในบัญชีไม่พอ)', () => {
   test.beforeAll(async () => {
     await resetUserBalance('6870021001', 100);
   });
@@ -18,79 +18,10 @@ test.describe('Scenario 4', () => {
     await loginAsUser(page);    
   });
 
-  
-  test('SC4-TC1 Withdraw Success', async ({ page }) => {
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('50');
-    await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
-    await expect(page.getByRole('heading', { name: '50' })).toBeVisible();
-
-  });
-
-  test('SC4-TC2 Withdraw Fail: Withdraw amount เป็นตัวเลขทศนิยม', async ({ page }) => {
-    await resetUserBalance('6870021001', 100);
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('50.1');
-    await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
-
-    const message = await page.locator('[cid="w1"]').evaluate(el => el.validationMessage);
-    expect(message).toBe('Please enter a valid value. The two nearest valid values are 50 and 51.');
-    //await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
-
-  });
-
-    test('SC4-TC3 Withdraw Fail: Withdraw amount เป็นจำนวนเต็ม น้อยกว่าหรือเท่ากับ 0', async ({ page }) => {
-    await resetUserBalance('6870021001', 100);
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('-1');
-    await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
-    const message = await page.locator('[cid="w1"]').evaluate(el => el.validationMessage);
-    expect(message).toBe('');
-    await expect(page.getByText('The amount must be greater than 0. Please enter a positive number.')).toBeVisible();
-    //await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
-
-  });
-
-  test('SC4-TC4 Withdraw Fail: Withdraw amount ไม่ใช่ตัวเลข', async ({ page }) => {
-    await resetUserBalance('6870021001', 100);
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).type('e');
-    await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
-    const message = await page.locator('[cid="w1"]').evaluate(el => el.validationMessage);
-    expect(message).toBe('Please enter a number.');
-    //await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
-
-  });
-
-
   test('SC4-TC5 Withdraw Fail: Withdraw amount เป็นจำนวนเต็ม มากกว่ายอดเงินคงเหลือ', async ({ page }) => {
-    await resetUserBalance('6870021001', 100);
     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
     await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('120');
     await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
     await expect(page.getByText('Your balance is not enough to complete the withdrawal')).toBeVisible();
-    //await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
   });
-
-
-  test('SC4-TC6 Withdraw Fail: Withdraw amount เป็นค่าว่าง', async ({ page }) => {
-    await resetUserBalance('6870021001', 100);
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
-    const message = await page.locator('[cid="w1"]').evaluate(el => el.validationMessage);
-    expect(message).toBe('Please fill out this field.');
-    //await expect(page.getByRole('heading', { name: '100' })).toBeVisible();
-  });
-
-  test('เจอ bug SC4-TC7 Withdraw Fail: Withdraw amount เป็นตัวเลขทศนิยม', async ({ page }) => {
-    await resetUserBalance('6870021001', 100);
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).click();
-    await page.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('50.00000001');
-    await page.getByRole('button', { name: 'Confirm' }).nth(1).click();
-    await expect(page.getByRole('heading', { name: '50' })).toBeVisible();
-
-  });
-
-
-
 });

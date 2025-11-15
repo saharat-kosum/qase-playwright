@@ -3,7 +3,7 @@ import { resetUserBalance } from '../utils/resetUserBalance.js';
 import { getMongoClient } from "../utils/mongoClient.js";
 import { loginAsUser } from '../utils/loginAsUser.js';
 
-test.describe('Scenario 7', () => {
+test.describe('Scenario 7: Login ผ่าน ตามด้วย การจ่ายบิลที่ผ่าน', () => {
     test.beforeAll(async () => {
         await resetUserBalance('6870021001', 1000);
     });
