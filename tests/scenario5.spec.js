@@ -4,10 +4,6 @@ import { getMongoClient } from "../utils/mongoClient.js";
 import { loginAsUser } from '../utils/loginAsUser.js';
 
 test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝากเงินที่ผ่าน ถอนเงินผ่าน และ โอนเงินไม่ผ่าน (ใส่เลขบัญชีที่จะรับเงินโอนผิด)', () => {
-  test.beforeAll(async () => {
-    await resetUserBalance('6870021002', 5);
-  });
-
   test.afterAll(async () => {
     const client = getMongoClient();
     await client.close();
