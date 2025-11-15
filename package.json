@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
+    "test1": "npx playwright test tests/bug1.spec.js --debug",
+    "test2": "npx playwright test tests/bug2.spec.js --debug",
+    "test3": "npx playwright test tests/bug3.spec.js --debug",
     "codegen": "npx playwright codegen"
   },
   "keywords": [],
