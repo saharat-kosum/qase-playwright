@@ -57,7 +57,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await expect(page.getByText('Your account ID should')).toBeVisible();
   });
 
-  test('SC5-TC3 Transfer failed - Account less than 10 digits', async ({ page }) => {
+  test('SC5-TC3 Transfer failed - Account is less than 10 digits', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('687002100');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
@@ -65,7 +65,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await expect(page.getByText('Your account ID must be')).toBeVisible();
   });
 
-  test('SC5-TC4 Transfer failed - Account more than 10 digits', async ({ page }) => {
+  test('SC5-TC4 Transfer failed - Account is more than 10 digits', async ({ page }) => {
     await page.getByRole('textbox', { name: 'Please put target Account ID:' }).fill('68700210010');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();

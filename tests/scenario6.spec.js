@@ -18,7 +18,7 @@ test.describe('Scenario 6: Login ผ่าน ตามด้วย การจ
         await loginAsUser(page);
     });
 
-    test('SC6-TC1 Bill Payment Fail - Payment amount is not decimal', async ({ page }) => {
+    test('SC6-TC1 Bill Payment Fail - Payment amount is decimal', async ({ page }) => {
         await resetUserBalance('6870021001', 1000);
         
         await page.getByRole('radio').first().check();
@@ -30,7 +30,7 @@ test.describe('Scenario 6: Login ผ่าน ตามด้วย การจ
         expect(message).toBe('Please enter a valid value. The two nearest valid values are 50 and 51.');
     });
 
-    test('SC6-TC2 Bill Payment Fail - Payment amount is decimal & less than 0', async ({ page }) => {
+    test('SC6-TC2 Bill Payment Fail - Payment amount is integer & less than 0', async ({ page }) => {
         await resetUserBalance('6870021001', 1000);
         
         await page.getByRole('radio').nth(1).check();
