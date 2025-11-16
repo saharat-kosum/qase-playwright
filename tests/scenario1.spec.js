@@ -70,7 +70,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
       .fill("Musk1234567890");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("The combined length of your")).toBeVisible();
+    await expect(page.getByText("The combined length of your first and last name must not exceed 30 characters.")).toBeVisible();
   });
 
   test("SC1-TC4 Register Fail - Account Number = ไม่ใช่ตัวเลขจำนวน 10 หลัก", async ({
@@ -90,7 +90,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("Your account ID should")).toBeVisible();
+    await expect(page.getByText("Your account ID should contain numbers only.")).toBeVisible();
   });
 
   test("SC1-TC5 Register Fail - Account Number = เป็นตัวเลข จำนวนน้อยกว่า 10 หลัก", async ({
@@ -110,7 +110,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("Your account ID must be")).toBeVisible();
+    await expect(page.getByText("Your account ID must be exactly 10 digits long.")).toBeVisible();
   });
 
   test("SC1-TC6 Register Fail -Account Number = เป็นตัวเลข จำนวนมากกว่า 10 หลัก", async ({
@@ -130,7 +130,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("Your account ID must be")).toBeVisible();
+    await expect(page.getByText("Your account ID must be exactly 10 digits long.")).toBeVisible();
   });
 
   test("SC1-TC7 Register Fail -Account Number = เป็นค่าว่าง", async ({
@@ -170,7 +170,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("Your password should contain")).toBeVisible();
+    await expect(page.getByText("Your password should contain numbers only.")).toBeVisible();
   });
 
   test("SC1-TC9 Register Fail -Password = เป็นตัวเลข จำนวนน้อยกว่า 4 หลัก", async ({
@@ -190,7 +190,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("Your password must be exactly")).toBeVisible();
+    await expect(page.getByText("Your password must be exactly 4 digits long.")).toBeVisible();
   });
 
   test("SC1-TC10 Register Fail -Password = เป็นตัวเลข จำนวนมากกว่า 4 หลัก", async ({
@@ -210,7 +210,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("Your password must be exactly")).toBeVisible();
+    await expect(page.getByText("Your password must be exactly 4 digits long.")).toBeVisible();
   });
 
   test("SC1-TC11 Register Fail -Password = เป็นค่าว่าง", async ({ page }) => {
@@ -282,7 +282,7 @@ test.describe("Scenario 1: ลงทะเบียนไม่ผ่าน", ()
     await page.getByRole("textbox", { name: "Last Name:" }).fill("Musk");
     await page.getByRole("button", { name: "Register" }).click();
 
-    await expect(page.getByText("This account ID is already in")).toBeVisible();
+    await expect(page.getByText("This account ID is already in use. Please use a different account ID.")).toBeVisible();
   });
   test("SC1-TC15 Register Fail -Firstname เป็นการพิมพ์ช่องว่าง (spacebar)", async ({
     page,

@@ -54,7 +54,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('Your account ID should')).toBeVisible();
+    await expect(page.getByText('Your account ID should contain numbers only.')).toBeVisible();
   });
 
   test('SC5-TC3 Transfer failed - Account is less than 10 digits', async ({ page }) => {
@@ -62,7 +62,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('Your account ID must be')).toBeVisible();
+    await expect(page.getByText('Your account ID must be exactly 10 digits long.')).toBeVisible();
   });
 
   test('SC5-TC4 Transfer failed - Account is more than 10 digits', async ({ page }) => {
@@ -70,7 +70,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('Your account ID must be')).toBeVisible();
+    await expect(page.getByText('Your account ID must be exactly 10 digits long.')).toBeVisible();
   });
 
   test('SC5-TC5 Transfer failed - Account is empty', async ({ page }) => {
@@ -95,7 +95,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('-1');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('The amount must be greater')).toBeVisible();
+    await expect(page.getByText('The amount must be greater than 0. Please enter a positive number.')).toBeVisible();
   });
 
   test('SC5-TC8 Transfer failed - Amount is not a number', async ({ page }) => {
@@ -112,7 +112,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('500');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('Your balance is not enough to')).toBeVisible();
+    await expect(page.getByText('Your balance is not enough to complete the transfer.')).toBeVisible();
   });
 
   test('SC5-TC10 Transfer failed - Account not found', async ({ page }) => {
@@ -120,7 +120,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('We couldn\'t find the')).toBeVisible();
+    await expect(page.getByText('We couldn\'t find the recipient\'s account. Please double-check the account ID.')).toBeVisible();
   });
 
   test('SC5-TC11 Transfer failed - Same Account', async ({ page }) => {
@@ -128,7 +128,7 @@ test.describe('Scenario 5: Login ผ่าน ตามด้วย การฝ
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByPlaceholder('Please fill amount').fill('20');
     await page.locator('form').filter({ hasText: 'Please put target Account ID:' }).getByRole('button').click();
 
-    await expect(page.getByText('You cannot transfer to your')).toBeVisible();
+    await expect(page.getByText('You cannot transfer to your own account.')).toBeVisible();
   });
 
   test('SC5-TC12 Transfer failed - Amount is empty', async ({ page }) => {

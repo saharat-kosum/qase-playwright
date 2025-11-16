@@ -49,7 +49,7 @@ test.describe('Scenario 8: Login ผ่าน ตามด้วย user1 โอ
     await page2.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('-1');
     await page2.getByRole('button', { name: 'Confirm' }).nth(1).click();
 
-    await expect(page2.getByText('The amount must be greater')).toBeVisible();
+    await expect(page2.getByText('The amount must be greater than 0. Please enter a positive number.')).toBeVisible();
   });
 
   test('SC8-TC4 Withdraw failed - Amount is not a number', async ({ page }) => {
@@ -66,7 +66,7 @@ test.describe('Scenario 8: Login ผ่าน ตามด้วย user1 โอ
     await page2.getByRole('spinbutton', { name: 'Please put your amount:' }).nth(1).fill('20');
     await page2.getByRole('button', { name: 'Confirm' }).nth(1).click();
 
-    await expect(page2.getByText('Your balance is not enough to')).toBeVisible();
+    await expect(page2.getByText('Your balance is not enough to complete the withdrawal')).toBeVisible();
   });
 
   test('SC8-TC6 Withdraw failed - Amount is empty', async ({ page }) => {
